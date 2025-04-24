@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Settimanale</title>
+  <link rel="manifest" href="manifest.json" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-6">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6">
+    <!-- Menu Settimanale -->
+    <div class="flex-1">
+      <h1 class="text-3xl font-bold mb-6 text-center">Menu Settimanale</h1>
+      <div id="menu" class="space-y-4"></div>
+      <button 
+        onclick="generaMenuCasuale()" 
+        class="mt-6 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+        Genera nuovo menu
+      </button>
+    </div>
+    <!-- Sidebar gestione -->
+    <div class="w-full lg:w-80 space-y-6">
+      <div class="p-4 border rounded-lg bg-white">
+        <h2 class="text-xl font-semibold mb-4">Aggiungi piatto</h2>
+        <input id="nomePiatto" type="text" placeholder="Nome piatto" class="w-full mb-2 p-2 border rounded"/>
+        <input id="ingredientiPiatto" type="text" placeholder="Ingredienti (separati da virgole)" class="w-full mb-2 p-2 border rounded"/>
+        <select id="stagionePiatto" class="w-full mb-4 p-2 border rounded">
+          <option value="autunno-inverno">Autunnale/Invernale</option>
+          <option value="primavera-estate">Primaverile/Estivo</option>
+        </select>
+        <button onclick="aggiungiPiatto()" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition w-full">
+          Aggiungi
+        </button>
+      </div>
+      <div class="p-4 border rounded-lg bg-white">
+        <label class="block mb-2 font-medium">Stagione menu:</label>
+        <select id="stagioneMenu" class="w-full p-2 border rounded">
+          <option value="autunno-inverno">Autunnale/Invernale</option>
+          <option value="primavera-estate">Primaverile/Estivo</option>
+        </select>
+      </div>
+      <div class="p-4 border rounded-lg bg-white">
+        <h2 class="text-xl font-semibold mb-2">Gestisci piatti</h2>
+        <select id="selezionaPiatto" class="w-full mb-2 p-2 border rounded"></select>
+        <button onclick="eliminaPiattoSelezionato()" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition w-full">
+          Elimina selezionato
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
